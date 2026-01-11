@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Tree Farming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; background:#eef5ee; }
+    .box { background:white; margin:40px auto; padding:20px; width:90%; max-width:400px; border-radius:8px; }
+    input, button { width:100%; padding:10px; margin-top:10px; }
+    button { background:green; color:white; border:none; border-radius:5px; }
+    a { color:green; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Login</h2>
+
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p>No account? <a href="signup.html">Signup</a></p>
+  <p><a href="forgot.html">Forgot Password?</a></p>
+</div>
+
+<script>
+function login(){
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  var users = JSON.parse(localStorage.getItem("users") || "[]");
+
+  var user = users.find(u => u.email === email && u.password === password);
+
+  if(!user){
+    alert("Invalid email or password ❌");
+    return;
+  }
+
+  localStorage.setItem("currentUser", user.myCode);
+  window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>

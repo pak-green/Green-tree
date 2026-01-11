@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel - Tree Farming</title>
+  <style>
+    body { font-family: Arial; background:#f2f2f2; }
+    h2 { text-align:center; }
+    .box { background:white; margin:10px; padding:10px; border-radius:8px; }
+    table { width:100%; border-collapse: collapse; font-size:14px; }
+    th, td { border:1px solid #ccc; padding:6px; text-align:center; }
+    th { background:#0a7c3a; color:white; }
+    button { padding:8px 15px; margin-top:10px; background:red; color:white; border:none; border-radius:5px; }
+  </style>
+</head>
+<body>
+
+<script>
+  // 🔐 Admin Security: redirect if not logged in
+  if(localStorage.getItem("adminLoggedIn") !== "true"){
+    window.location.href = "admin-login.html";
+  }
+</script>
+
+<h2>🌳 Admin Panel</h2>
+
+<div class="box">
+  <p><b>Total Investors:</b> <span id="totalUsers">0</span></p>
+  <p><b>Total Investment:</b> Rs <span id="totalInvestment">0</span></p>
+  <p><b>Total Referral Payout:</b> Rs <span id="totalReferral">0</span></p>
+
+  <button onclick="adminLogout()">Logout</button>
+</div>
+
+<div class="box">
+  <h3>Investor Details</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Tree</th>
+        <th>Investment</th>
+        <th>Referral Code</th>
+        <th>Referred Users</th>
+        <th>Referral Income</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+<script>
+var users = JSON.parse(localStorage.getItem("users") || "[]");
+
+document.getElementById("totalUsers").innerText = users.length;
+
+var totalInvestment = 0;
+var totalReferral = 0;
+
+var tbody = document.getElementById("tableBody");
+
+users.forEach(function(u){
+  var refs = users.filter(x => x.referralUsed == u.myCode).length;
+  var refIncome = refs * 1000;
+
+  totalInvestment += u.amount;
+  totalReferral += refIncome;
+
+  var row = `
+    <tr>
+      <td>${u.name}</td>
+      <td>${u.email}</td>
+      <td>${u.tree}</td>
+      <td>${u.amount}</td>
+      <td>${u.myCode}</td>
+      <td>${refs}</td>
+      <td>${refIncome}</td>
+    </tr>
+  `;
+  tbody.innerHTML += row;
+});
+
+document.getElementById("totalInvestment").innerText = totalInvestment;
+document.getElementById("totalReferral").innerText = totalReferral;
+
+// 🔴 Logout function
+function adminLogout(){
+  localStorage.removeItem("adminLoggedIn");
+  window.location.href = "admin-login.html";
+}
+</script>
+
+</body>
+</html>

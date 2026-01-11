@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Login - Tree Farming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; background:#eef5ee; }
+    .box { background:white; margin:40px auto; padding:20px; width:90%; max-width:400px; border-radius:8px; }
+    input, button { width:100%; padding:10px; margin-top:10px; }
+    button { background:darkblue; color:white; border:none; border-radius:5px; }
+    a { color:darkblue; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Admin Login</h2>
+
+  <input type="text" id="adminUser" placeholder="Admin Username">
+  <input type="password" id="adminPass" placeholder="Password">
+  <button onclick="adminLogin()">Login</button>
+
+  <p><a href="admin-forgot.html">Forgot Password?</a></p>
+</div>
+
+<script>
+function adminLogin(){
+  var username = document.getElementById("adminUser").value;
+  var password = document.getElementById("adminPass").value;
+
+  // 🔐 Demo credentials
+  var adminUser = "admin";
+  var adminPass = "tree123";
+
+  if(username === adminUser && password === adminPass){
+    localStorage.setItem("adminLoggedIn", "true"); // Admin logged in
+    window.location.href = "admin.html";
+  } else {
+    alert("Invalid admin username or password ❌");
+  }
+}
+</script>
+
+</body>
+</html>

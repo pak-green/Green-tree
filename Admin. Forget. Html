@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Forgot Password</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; background:#eef5ee; }
+    .box { background:white; margin:40px auto; padding:20px; width:90%; max-width:400px; border-radius:8px; }
+    input, button { width:100%; padding:10px; margin-top:10px; }
+    button { background:orange; color:white; border:none; border-radius:5px; }
+    a { color:darkblue; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Admin Forgot Password</h2>
+  <input type="text" id="username" placeholder="Enter admin username">
+  <button onclick="resetAdmin()">Reset Password</button>
+  <p>Back to <a href="admin-login.html">Login</a></p>
+</div>
+
+<script>
+function resetAdmin(){
+  var username = document.getElementById("username").value;
+
+  if(username !== "admin"){
+    alert("Username not found ❌");
+    return;
+  }
+
+  var tempPass = "tree123"; // Demo password
+  alert("Admin password is: " + tempPass + "\nUse this to login.");
+}
+</script>
+
+</body>
+</html>

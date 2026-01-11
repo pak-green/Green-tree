@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tree Farming Investment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; margin:0; background:#f4f6f5; }
+    header { background:#0a7c3a; color:white; padding:20px; text-align:center; }
+    section { padding:20px; }
+    .card { background:white; padding:15px; margin-bottom:15px; border-radius:8px; }
+    button {
+      width:100%; padding:12px; margin-top:10px;
+      background:#0a7c3a; color:white; border:none; border-radius:5px;
+      font-size:16px;
+    }
+    .outline { background:white; color:#0a7c3a; border:2px solid #0a7c3a; }
+    footer { text-align:center; padding:15px; background:#ddd; font-size:14px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌳 Tree Farming Investment</h1>
+  <p>Grow Trees • Grow Wealth • Secure Future</p>
+</header>
+
+<section>
+  <div class="card">
+    <h2>About Project</h2>
+    <p>
+      We provide long-term tree farming investment opportunities.
+      Investors can plant trees, earn profit after maturity,
+      and generate referral income by inviting others.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Create your account</li>
+      <li>Invest in tree farming</li>
+      <li>Tree grows over years</li>
+      <li>Earn profit after maturity</li>
+      <li>Earn referral income</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Tree Packages</h2>
+    <p>🌳 Mango – 6 Years</p>
+    <p>🌳 Neem – 5 Years</p>
+    <p>🌳 Teak – 8 Years</p>
+  </div>
+
+  <div class="card">
+    <h2>Get Started</h2>
+    <button onclick="location.href='signup.html'">Create Account</button>
+    <button class="outline" onclick="location.href='login.html'">Login</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Tree Farming Investment</p>
+  <p>This is a demo investment platform. No guaranteed returns.</p>
+</footer>
+
+</body>
+</html>

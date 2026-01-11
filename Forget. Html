@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forgot Password - Tree Farming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; background:#eef5ee; }
+    .box { background:white; margin:40px auto; padding:20px; width:90%; max-width:400px; border-radius:8px; }
+    input, button { width:100%; padding:10px; margin-top:10px; }
+    button { background:orange; color:white; border:none; border-radius:5px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Forgot Password</h2>
+  <input type="email" id="email" placeholder="Enter your registered email">
+  <button onclick="resetPassword()">Reset Password</button>
+  <p>Back to <a href="login.html">Login</a></p>
+</div>
+
+<script>
+function resetPassword(){
+  var email = document.getElementById("email").value;
+  var users = JSON.parse(localStorage.getItem("users") || "[]");
+
+  var userIndex = users.findIndex(u => u.email === email);
+
+  if(userIndex === -1){
+    alert("Email not found ❌");
+    return;
+  }
+
+  // Generate temporary password
+  var tempPass = Math.random().toString(36).slice(-8); // 8 char
+  users[userIndex].password = tempPass;
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Temporary password: " + tempPass + "\nUse this to login.");
+}
+</script>
+
+</body>
+</html>

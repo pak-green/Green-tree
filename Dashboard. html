@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - Tree Farming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{ font-family: Arial; background:#eef5ee; }
+    .box{ background:white; margin:20px auto; padding:15px; width:90%; max-width:500px; border-radius:8px; }
+    button{ padding:10px; width:100%; margin-top:10px; background:green; color:white; border:none; border-radius:5px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Welcome 🌳</h2>
+  <p id="userInfo"></p>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+var users = JSON.parse(localStorage.getItem("users") || "[]");
+var currentCode = localStorage.getItem("currentUser");
+var user = users.find(u => u.myCode === currentCode);
+
+if(!user){
+  window.location.href = "login.html";
+}
+
+document.getElementById("userInfo").innerHTML =
+  `Name: ${user.name}<br>
+   Email: ${user.email}<br>
+   Tree: ${user.tree}<br>
+   Investment: Rs ${user.amount}<br>
+   Referral Code: ${user.myCode}<br>
+   Referral Used: ${user.referralUsed || 'None'}`;
+
+function logout(){
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
